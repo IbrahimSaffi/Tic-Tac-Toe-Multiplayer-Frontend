@@ -2,9 +2,9 @@ function HistoryContainer(props){
     return (
         <div className="history-container">
            {props.history.map((ele,i)=>{
-           if(i!==props.history.length-1){
-           return <div onClick={()=>props.handleHistoryClick(i)} className="history-card">
-                 Move: {i+1}
+           if(i>0){
+           return <div key={i} onClick={()=>props.handleHistoryClick(i)} className="history-card">
+                 Move: {i}
             </div>
            }
            })}

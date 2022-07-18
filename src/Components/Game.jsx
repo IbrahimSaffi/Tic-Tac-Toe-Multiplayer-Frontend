@@ -3,7 +3,11 @@ import GameContainer from "./GameContainer";
 import HistoryContainer from "./HistoryContainer"
 function Game() {
     let gameArray = [["","",""],["","",""],["","",""]]
-    function gameStatus(matrix,currPlayer){
+    let [currGameStatus,setStatus] = useState("Game has started")
+    let [currHistory,setHistory] = useState([])
+    let [currPlayer,setCurrPlayer] = useState("X")
+    let [currMatrix,setCurrMatrix] = useState(gameArray)
+    function gameStatus(matrix,player,status){
         if((matrix[0][0]===matrix[1][1]&&matrix[0][0]===matrix[2][2]&&matrix[0][0]!=="")
            ||(matrix[0][0]===matrix[0][1]&&matrix[0][0]===matrix[0][2]&&matrix[0][0]!=="")
            ||(matrix[0][0]===matrix[1][0]&&matrix[0][0]===matrix[2][0]&&matrix[0][0]!=="")
@@ -13,35 +17,37 @@ function Game() {
            ||(matrix[0][2]===matrix[1][2]&&matrix[0][2]===matrix[2][2]&&matrix[0][2]!=="")
            ||(matrix[0][2]===matrix[1][1]&&matrix[0][2]===matrix[2][0]&&matrix[0][2]!=="")
         ){
-            setStatus(`Player ${currPlayer} has won the game`)
+            status = `Player ${player} has won the game`
         }
         else if(matrix.every(ele=>ele.every(ele=>ele!==""))){
-            setStatus(`Stalemate`)
+            status = `Stalemate`
         }
+        return status
     }
     function handleClick(i,j){
         if(currMatrix[i][j]===""&&currGameStatus==="Game has started"){
-            //Issue here
-            // History is not exactly as it should be 
-            // it is affecting currPlayer history too
-            currMatrix = currMatrix.map(ele=>ele.map(ele=>ele))
-            currMatrix[i][j] = currPlayer
-            gameStatus(currMatrix,currPlayer)
-            currPlayer==="X"?setCurrPlayer("O"):setCurrPlayer("X")
-            currHistory.push([currMatrix,currPlayer])
-            setCurrMatrix(currHistory[currHistory.length-1][0])
+            let tempMatrix = currMatrix.map(ele=>ele.map(ele=>ele))
+            tempMatrix[i][j] = currPlayer
+            let tempStatus = currGameStatus
+            let tempPlayer = currPlayer
+            tempStatus= gameStatus(tempMatrix,tempPlayer,tempStatus)
+            setStatus(tempStatus)
+            setCurrMatrix(tempMatrix)
+            tempPlayer==="X"?tempPlayer="O":tempPlayer="X"
+            setCurrPlayer(tempPlayer)
+            let tempHistory = currHistory
+            tempHistory.push([currMatrix,currPlayer,currGameStatus])
+            setHistory(tempHistory)
+            console.log(currHistory)
         }       
     }
     function handleHistoryClick(i){
-            currHistory = currHistory.slice(0,i+1)
-            setHistory(currHistory)
-            setCurrPlayer(currHistory[i][1])
+        let tempHistory = currHistory.slice(0,i)
+            setHistory(tempHistory)
             setCurrMatrix(currHistory[i][0])
+            setCurrPlayer(currHistory[i][1])
+            setStatus(currHistory[i][2])
     }
-    let [currGameStatus,setStatus] = useState("Game has started")
-    let [currHistory,setHistory] = useState([])
-    let [currPlayer,setCurrPlayer] = useState("X")
-    let [currMatrix,setCurrMatrix] = useState(gameArray)
     return (
         <div className="game">
             <h1>Tic-Tac-Toe Game</h1>
