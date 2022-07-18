@@ -3,7 +3,7 @@ function GameContainer(props){
     let gameContainer = props.gameArray.map((row,i)=>{
           let tempRow = row.map((ele,j)=>{
             return <div key={`${i},${j}`} className="box" onClick={()=>props.handleClick(i,j)}>
-                 <h1>
+                 <h1 className="box-text">
                  {ele}
                  </h1>
                  </div>

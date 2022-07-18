@@ -10,11 +10,10 @@
     height: 100vh;
     width: 100vw;
     align-items: center;
-    justify-content: flex-start;
-    background: url(../public/2108.w026.n002.770B.p1.770.jpg);
+    background: url(../public/background.jpg);
     background-size: cover;
     font-family: 'Rubik Moonrocks', cursive;
-    color: rgb(0, 94, 89);
+    color: rgb(94 55 49);
     padding-top: 20vh;
 }
 .game * {
@@ -30,30 +29,38 @@ p {
 .game-container {
     display: flex;
     flex-direction: column;
-    width: 30vw;
+    width: 27vw;
     background: linear-gradient(90deg,rgb(68, 68, 255),rgb(46, 161, 46));
     opacity: 0.7;
     height: 40vh;
+    border: 4px solid rgb(104, 177, 143) ;
 }
 .box {
     width: 33.3%;
-    border: 1px solid blue ;
-    color: black;
+    border: 4px solid rgb(104, 177, 143);
     cursor: pointer;
-    text-align: center;
-    font-size: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+ .box-text {
+    font-size:50px
+} 
 .history-container{
     width: 30vw;
     height: 40vh;
-    border: 2px solid red;
-    overflow: scroll;
+    overflow-y: scroll;
+    background-color: rgb(104, 177, 143);
 }
 .history-card {
     height: 33.3%;
     width: 100%;
-   border:2px solid red;
+   border:10px solid rgb(104, 177, 143);
    cursor: pointer;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: #f3e7d0;
 }
 .outer-container {
     display: flex;
