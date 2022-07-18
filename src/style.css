@@ -7,7 +7,7 @@
 .game {
     display:  flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
     align-items: center;
     background: url(../public/background.jpg);
@@ -69,4 +69,22 @@ p {
     margin-top: 20px;
     width: 65%;
     gap: 5%;
+}
+@media only screen and (max-width:480px) {
+    .game {
+        padding-top: 5vh;
+    }
+    .outer-container{
+        width: 90vw;
+        flex-direction: column;
+        order: 4;
+    }
+    .game-container {
+       width: 90%;    
+    }
+    .history-container {
+       width: 90%;
+       margin-top: 20px;
+       margin-bottom: 20px;
+    }
 }
