@@ -28,6 +28,16 @@ function Game() {
         if(currMatrix[i][j]===""&&currGameStatus==="Game has started"){
             let tempMatrix = currMatrix.map(ele=>ele.map(ele=>ele))
             tempMatrix[i][j] = currPlayer
+            let currMove;
+            if(i===0){
+                currMove = 1+j
+            }
+            else if(i===1){
+                currMove = 4+j
+            }
+            else if(i===2){
+                currMove = 7+j
+            }
             let tempStatus = currGameStatus
             let tempPlayer = currPlayer
             tempStatus= gameStatus(tempMatrix,tempPlayer,tempStatus)
@@ -36,7 +46,7 @@ function Game() {
             tempPlayer==="X"?tempPlayer="O":tempPlayer="X"
             setCurrPlayer(tempPlayer)
             let tempHistory = currHistory
-            tempHistory.push([currMatrix,currPlayer,currGameStatus])
+            tempHistory.push([currMatrix,currPlayer,currGameStatus,currMove])
             setHistory(tempHistory)
             console.log(currHistory)
         }       
