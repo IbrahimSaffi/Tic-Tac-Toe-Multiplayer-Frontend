@@ -14,7 +14,7 @@ export default function Start() {
   let [user,setName] = useState(null)
   let [socket,setSocket]  = useState(null)
   useEffect(() => {
-   setSocket(io("localhost:8000"))
+   setSocket(io("https://tic-tac-toe-backend12.herokuapp.com/"))
   }, [])
   
   function createRoom(){
