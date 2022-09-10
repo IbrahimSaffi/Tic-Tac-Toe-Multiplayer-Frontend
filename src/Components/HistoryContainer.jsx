@@ -1,6 +1,6 @@
 function HistoryContainer(props){
     return (
-        <div className="history-container">
+        <div style={{display:props.mode==="bot"?"block":"none"}} className="history-container">
            {props.history.map((ele,i)=>{
            if(i>0){
            return <div key={i} onClick={()=>props.handleHistoryClick(i)} className="history-card">

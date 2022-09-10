@@ -3,18 +3,78 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    color: rgb(94 55 49);
 }
-.game {
+body {
     display:  flex;
     flex-direction: column;
     min-height: 100vh;
     width: 100vw;
     align-items: center;
+    justify-content: center;
     background: url(../public/background.jpg);
     background-size: cover;
     font-family: 'Rubik Moonrocks', cursive;
-    color: rgb(94 55 49);
+}
+.game{
+    display:  flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    width: 100vw;
     padding-top: 20vh;
+}
+.start {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+.rooms button{
+    width: 200px;
+}
+.enter-name{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.row{
+    display: flex;
+    gap: 10px;
+}
+.rooms {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.option{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid gray;
+    background-color: transparent;
+}
+button{
+  padding: 10px;
+  background-color:#f3e7d0 ;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+button:hover{
+  filter: brightness(80%);
 }
 .game * {
     text-align: center;
@@ -69,6 +129,12 @@ p {
     margin-top: 20px;
     width: 65%;
     gap: 5%;
+}
+@media only screen and (max-width:700px) {
+    .game-container {
+       width: 80%;    
+    }
+
 }
 @media only screen and (max-width:480px) {
     .game {
